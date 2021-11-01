@@ -28,23 +28,20 @@ if ! command -v sudo docker &> /dev/null;then
     done
 fi
 
-echo "Downloading git "
-git clone https://gitlab.com/cryptolex/NTT_Miner.git
-
 echo "Creating folder file"
 sudo mkdir -p /data/blockchain/ntity-01
 
 echo "Copy the configuration File"
-sudo cp ./NTT_Miner/files/ntity.genesis.json /data/blockchain/
-sudo cp ./NTT_Miner/files/static-nodes.json /data/blockchain/
+sudo cp ./files/ntity.genesis.json /data/blockchain/
+sudo cp ./files/static-nodes.json /data/blockchain/
 
 echo "Build docker image"
 echo "Choose platform"
 select yn in "Server" "Raspberry-64" "Raspberry-32" "Exit"; do
     case $yn in
-        Server ) sudo docker build -f ./NTT_Miner/docker/Dockerfile -t ntity/blockchain .; break;;
-        Raspberry-64 ) sudo docker build -f ./NTT_Miner/docker/Dockerfile-Raspberry -t ntity/blockchain .; break;;
-        Raspberry-32 ) sudo docker build -f ./NTT_Miner/docker/Dockerfile-Raspberry-32 -t ntity/blockchain .; break;;
+        Server ) sudo docker pull ntity/blockchain:latest; break;;
+        Raspberry-64 ) sudo docker pull ntity/blockchain:arm64v8; break;;
+        Raspberry-32 ) sudo docker pull ntity/blockchain:arm32v7; break;;
         Exit ) exit 0;;
     esac
 done
@@ -72,7 +69,7 @@ echo  $pass | sudo tee /data/blockchain/password/password.txt
 
 echo "Please enter your wallet with the 0x"
 read -p wallet
-sed -i "s/[Wallet]/$wallet/" ./NTT_Miner/ntity.yml
+sed -i "s/[Wallet]/$wallet/" ./ntity.yml
 
 echo "We initalize the miner"
 sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
@@ -80,6 +77,6 @@ sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain 
 
 echo "Please choose a name to your miner"
 read -p name
-sed -i "s/[name]/$name/" ./NTT_Miner/files/app.json
+sed -i "s/[name]/$name/" ./files/app.json
 
 echo "You are ready to start the miner"

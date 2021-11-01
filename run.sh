@@ -39,9 +39,9 @@ echo "Build docker image"
 echo "Choose platform"
 select yn in "Server" "Raspberry-64" "Raspberry-32" "Exit"; do
     case $yn in
-        Server ) sudo docker pull ntity/blockchain:latest; break;;
-        Raspberry-64 ) sudo docker pull ntity/blockchain:arm64v8; break;;
-        Raspberry-32 ) sudo docker pull ntity/blockchain:arm32v7; break;;
+        Server ) sudo docker pull ntity/blockchain:latest;version=latest;break;;
+        Raspberry-64 ) sudo docker pull ntity/blockchain:arm64v8;version=arm64v8;break;;
+        Raspberry-32 ) sudo docker pull ntity/blockchain:arm32v7;version=arm32v7;break;;
         Exit ) exit 0;;
     esac
 done
@@ -51,7 +51,7 @@ echo "To use existing one you need a file like this {'version':3,'id':'fc7d2 ...
 
 select yn in "Create" "Existing" "Exit"; do
     case $yn in
-        Create ) sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/blockchain geth --datadir=/ethereum --nousb account new; echo "Please copy your wallet for next part";break;;
+        Create ) sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/blockchain:$version geth --datadir=/ethereum --nousb account new; echo "Please copy your wallet for next part";break;;
         Existing ) sudo mkdir ./keystore/; echo "Please copy the file into keystore and press Enter";while [ true ] ; do
                                             read -s -N 1 -t 1 key
                                             if [[ $key == $'\x0a' ]]; then
@@ -73,7 +73,7 @@ sed -i "s/[Wallet]/$wallet/" ./ntity.yml
 
 echo "We initalize the miner"
 sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
-sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json
+sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:$version geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json
 
 echo "Please choose a name to your miner"
 read -p name

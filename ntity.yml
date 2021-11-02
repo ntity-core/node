@@ -8,7 +8,7 @@ networks:
         - subnet: 172.168.1.0/16
 services:
   ntity-01:
-    image: ntity/blockchain:arm32v7
+    image: ntity/blockchain:latest
     restart: always
     container_name: ntity-01
     hostname: ntity-01
@@ -28,7 +28,7 @@ services:
         ipv4_address: 172.168.1.2
     environment:
       - NETWORK_ID=197710212030
-      - WALLET=[Wallet]
+      - WALLET=0x57616c6c6574
       - GETH_OPTS=--nodiscover --miner.gasprice=1 --allow-insecure-unlock --password /blockchain/password/password.txt --mine
       - DATA_DIR=/blockchain
       - FREEZER_DIR=/blockchain/freezer

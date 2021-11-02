@@ -75,13 +75,13 @@ select yn in "Create" "Existing" "Exit"; do
 done
 
 echo "Use password to unlock the wallet"
-read -sp pass
+read -s pass
 sudo mkdir /data/blockchain/password/
 echo  $pass | sudo tee /data/blockchain/password/password.txt
 
 echo "Please enter your wallet with the 0x"
-read -p wallet
-sed -i "s/[Wallet]/$wallet/" ./ntity.yml
+read wallet
+sed -i -e "s/0x57616c6c6574/$wallet/" ntity.yml
 
 echo "We initalize the miner"
 sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
@@ -97,10 +97,9 @@ if [ $version = "arm32v7" ]; then
     echo "test"
     sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:arm32v7 geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json 
 fi; 
-sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:$version geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json
 
 echo "Please choose a name to your miner"
-read -p name
-sed -i "s/[name]/$name/" ./files/app.json
+read name
+sed -i -e "s/nttMiner/$name/" ./files/app.json
 
 echo "You are ready to start the miner"

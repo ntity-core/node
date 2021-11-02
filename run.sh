@@ -52,15 +52,15 @@ echo "To use existing one you need a file like this {'version':3,'id':'fc7d2 ...
 select yn in "Create" "Existing" "Exit"; do
     case $yn in
         Create ) if [ $version = "latest" ]; then 
-                    echo "test"
+                
                     sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/blockchain:latest geth --datadir=/ethereum --nousb account new 
                  fi;
                  if [ $version = "arm64v8" ]; then 
-                    echo "test"
+                
                     sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/blockchain:arm64v8 geth --datadir=/ethereum --nousb account new 
                  fi;
                  if [ $version = "arm32v7" ]; then
-                    echo "test"
+                
                     sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/blockchain:arm32v7 geth --datadir=/ethereum --nousb account new 
                  fi;
                  echo "Please copy your wallet for next part";break;;
@@ -86,15 +86,15 @@ sed -i -e "s/0x57616c6c6574/$wallet/" ntity.yml
 echo "We initalize the miner"
 sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
 if [ $version = "latest" ]; then
-    echo "test"
+
     sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:latest geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json 
 fi; 
 if [ $version = "arm64v8" ]; then
-    echo "test"
+
     sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:arm64v8 geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json 
 fi; 
 if [ $version = "arm32v7" ]; then 
-    echo "test"
+
     sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/blockchain:arm32v7 geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json 
 fi; 
 

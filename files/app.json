@@ -12,7 +12,7 @@
         "RPC_HOST": "localhost",
         "RPC_PORT": "8545",
         "LISTENING_PORT": "30303",
-        "INSTANCE_NAME": "[name]",
+        "INSTANCE_NAME": "nttMiner",
         "WS_SERVER": "ws://stats.ntity.io:3000",
         "WS_SECRET": "eth-net-stats-secret",
         "VERBOSITY": 1

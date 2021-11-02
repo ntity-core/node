@@ -77,7 +77,7 @@ done
 echo "Use password to unlock the wallet"
 read -s pass
 sudo mkdir /data/blockchain/password/
-echo  $pass | sudo tee /data/blockchain/password/password.txt
+echo  "$pass" | sudo tee /data/blockchain/password/password.txt
 
 echo "Please enter your wallet with the 0x"
 read wallet

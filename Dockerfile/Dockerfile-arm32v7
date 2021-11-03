@@ -20,7 +20,7 @@ RUN cd /root &&\
     npm install -g pm2
 
 # Shell script
-COPY ./run.sh /root/run.sh
+COPY ./Dockerfile/run.sh /root/run.sh
 RUN chmod +x /root/*.sh
 
 # Misc

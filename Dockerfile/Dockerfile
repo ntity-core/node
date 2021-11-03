@@ -11,6 +11,7 @@ FROM alpine:latest
 
 RUN apk add --no-cache ca-certificates bash nodejs npm perl git
 COPY --from=builder /go-ethereum/build/bin/geth /usr/local/bin/
+COPY --from=builder /go-ethereum/build/bin/puppeth /usr/local/bin/
 
 RUN cd /root &&\
     git clone https://github.com/cubedro/eth-net-intelligence-api &&\
@@ -19,7 +20,7 @@ RUN cd /root &&\
     npm install -g pm2
 
 # Shell script
-COPY ./run.sh /root/run.sh
+COPY ./Dockerfile/run.sh /root/run.sh
 RUN chmod +x /root/*.sh
 
 # Misc

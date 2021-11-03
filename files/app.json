@@ -16,6 +16,6 @@
         "CONTACT_DETAILS": "",
         "WS_SERVER": "ws://stats.ntity.io:3000",
         "WS_SECRET": "eth-net-stats-secret",
-        "VERBOSITY": 1
+        "VERBOSITY": 3
     }
 }]

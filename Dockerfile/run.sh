@@ -6,30 +6,12 @@ echo -e "================  VARIABLES  ===================
       FREEZER_DIR=${FREEZER_DIR:="/ethereum/freezer"}
       AUTHORIZED_IP=${AUTHORIZED_IP:="0.0.0.0"}
       API_ALLOWED=${API_ALLOWED:="debug,net,eth,web3,txpool"}
-      VERBOSITY=${VERBOSITY:=1}
+      VERBOSITY=${VERBOSITY:=3}
       NETWORK=${NETWORK:=mainnet}
       GCMODE=${GCMODE:=full}
       SYNCMODE=${SYNCMODE:=full}
       CACHE=${CACHE:=2048}
       DEV_MODE=${DEV_MODE:=false}"
-
-if [ $NETWORK == "ropsten" ]; then
-  echo "Using ropsten config..."
-  GETH_OPTS="$GETH_OPTS --testnet "
-  echo -e "      NETWORK_ID=${NETWORK_ID:=3}"
-elif [ $NETWORK == "rinkeby" ]; then
-  echo "Using rinkeby config..."
-  GETH_OPTS="$GETH_OPTS --rinkeby "
-  echo -e "      NETWORK_ID=${NETWORK_ID:=4}"
-elif [ $NETWORK == "goerli" ]; then
-  echo "Using goerli config..."
-  GETH_OPTS="$GETH_OPTS --goerli "
-  echo -e "      NETWORK_ID=${NETWORK_ID:=5}"
-else
-  echo "Using mainnet config..."
-  echo -e "      NETWORK_ID=${NETWORK_ID:=1}"
-fi
-
 echo "================================================="
 
 if [ "x$DATA_DIR" == "x" ]; then
@@ -58,11 +40,11 @@ GETH_OPTS="$GETH_OPTS
           --verbosity=$VERBOSITY
           --unlock=$WALLET --miner.etherbase=$WALLET"
 
-geth console --exec "admin.nodeInfo.enode" > $DATA_DIR/enode.txt
-
 cd /root/eth-net-intelligence-api
 pm2 start ./app.json
 
 echo "geth $GETH_OPTS"
+
+geth console --exec "admin.nodeInfo.enode" > $DATA_DIR/enode.txt
 
 geth $GETH_OPTS 2>&1 >$NODE_LOG

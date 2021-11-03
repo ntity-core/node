@@ -5,16 +5,15 @@ RUN apk add make gcc musl-dev linux-headers git
 
 WORKDIR /
 
-RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.10.8 && make all
+RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.10.11 && make geth
 
 FROM arm32v7/alpine:latest
 
 RUN apk add --no-cache ca-certificates bash nodejs nodejs-npm perl git
 COPY --from=builder /go-ethereum/build/bin/geth /usr/local/bin/
-COPY --from=builder /go-ethereum/build/bin/puppeth /usr/local/bin/
 
 RUN cd /root &&\
-    git clone https://github.com/cubedro/eth-net-intelligence-api &&\
+    git clone https://github.com/ethereum/eth-net-intelligence-api &&\
     cd eth-net-intelligence-api &&\
     npm install &&\
     npm install -g pm2

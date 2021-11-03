@@ -13,11 +13,11 @@ RUN apk add --no-cache ca-certificates bash nodejs npm perl git
 COPY --from=builder /go-ethereum/build/bin/geth /usr/local/bin/
 
 RUN cd /root &&\
-    git clone https://github.com/cubedro/eth-net-intelligence-api &&\
+    git clone https://github.com/ethereum/eth-net-intelligence-api &&\
     cd eth-net-intelligence-api &&\
     npm install &&\
     npm install -g pm2
-
+    
 # Shell script
 COPY ./Dockerfile/run.sh /root/run.sh
 RUN chmod +x /root/*.sh

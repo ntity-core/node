@@ -58,11 +58,11 @@ GETH_OPTS="$GETH_OPTS
           --verbosity=$VERBOSITY
           --unlock=$WALLET --miner.etherbase=$WALLET"
 
+geth console --exec "admin.nodeInfo.enode" > $DATA_DIR/enode.txt
+
 cd /root/eth-net-intelligence-api
 pm2 start ./app.json
 
 echo "geth $GETH_OPTS"
-
-geth console --exec "admin.nodeInfo.enode" > $DATA_DIR/enode.txt
 
 geth $GETH_OPTS 2>&1 >$NODE_LOG

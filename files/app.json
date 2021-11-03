@@ -4,7 +4,7 @@
     "log_date_format": "YYYY-MM-DD HH:mm Z",
     "merge_logs": false,
     "watch": false,
-    "max_restarts": 10,
+    "max_restarts": 10000,
     "exec_interpreter": "node",
     "exec_mode": "fork_mode",
     "env": {
@@ -13,6 +13,7 @@
         "RPC_PORT": "8545",
         "LISTENING_PORT": "30303",
         "INSTANCE_NAME": "nttMiner",
+        "CONTACT_DETAILS": "",
         "WS_SERVER": "ws://stats.ntity.io:3000",
         "WS_SECRET": "eth-net-stats-secret",
         "VERBOSITY": 1

@@ -1,11 +1,11 @@
 # Image definition
-FROM golang:1.16-alpine as builder
+FROM golang:1.17.2-alpine as builder
 
 RUN apk add --no-cache make gcc musl-dev linux-headers git
 
 WORKDIR /
 
-RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.10.11 && make all
+RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.10.11 && make geth
 
 FROM alpine:latest
 
@@ -19,7 +19,7 @@ RUN cd /root &&\
     npm install -g pm2
 
 # Shell script
-COPY ./run.sh /root/run.sh
+COPY ./Dockerfile/run.sh /root/run.sh
 RUN chmod +x /root/*.sh
 
 # Misc

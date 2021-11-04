@@ -6,7 +6,7 @@ echo -e "================  VARIABLES  ===================
       FREEZER_DIR=${FREEZER_DIR:="/ethereum/freezer"}
       AUTHORIZED_IP=${AUTHORIZED_IP:="0.0.0.0"}
       API_ALLOWED=${API_ALLOWED:="debug,net,eth,web3,txpool"}
-      VERBOSITY=${VERBOSITY:=3}
+      VERBOSITY=${VERBOSITY:=1}
       NETWORK=${NETWORK:=mainnet}
       GCMODE=${GCMODE:=full}
       SYNCMODE=${SYNCMODE:=full}

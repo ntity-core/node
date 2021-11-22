@@ -8,7 +8,7 @@ echo -e "================  VARIABLES  ===================
       API_ALLOWED=${API_ALLOWED:="debug,net,eth,web3,txpool"}
       VERBOSITY=${VERBOSITY:=1}
       NETWORK=${NETWORK:=mainnet}
-      GCMODE=${GCMODE:=full}
+      GCMODE=${GCMODE:=archive}
       SYNCMODE=${SYNCMODE:=full}
       CACHE=${CACHE:=2048}
       DEV_MODE=${DEV_MODE:=false}"
@@ -32,7 +32,7 @@ NODE_LOG="$DATA_DIR/node.log"
 
 GETH_OPTS="$GETH_OPTS 
           --syncmode=$SYNCMODE --gcmode=$GCMODE
-          --http --http.addr=$AUTHORIZED_IP --http.corsdomain '*' --http.api=$API_ALLOWED
+          --http --http.addr=$AUTHORIZED_IP --http.corsdomain '*' --http.api=$API_ALLOWED --http.vhosts=*
           --ws --ws.addr=$AUTHORIZED_IP --ws.api=$API_ALLOWED
           --nousb
           --datadir=$DATA_DIR --datadir.ancient=$FREEZER_DIR

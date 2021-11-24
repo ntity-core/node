@@ -48,6 +48,12 @@ All the image is on docker hub.
 
 For this tutorial we use latest you can change for the tag you want by replacing latest by the tag.
 
+You need to pull the image you want to continue the installation node
+
+```bash
+sudo docker pull ntity/node:latest
+```
+
 ## Create a new wallet
 
 First you need to create a wallet
@@ -120,10 +126,12 @@ docker-compose -f ntity.yml down -v
 
 ## Get Enode
 
-To get the enode once you started the node a new file `enode.txt` will be create in `/data/blockchain/ntity-01/`. You can get the data with 
+To get the enode once you start the container you need to execute the following commands
 
-```bash
-cat /data/blockchain/ntity-01/enode.txt
+```bash 
+docker exec -it ntity-01 /bin/bash
+cd /blockchain/ && geth attach geth.ipc
+admin.nodeInfo.enode
 ```
 
 it's look like that

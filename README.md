@@ -139,3 +139,24 @@ it's look like that
 
 Add your ipv4 public to replace 127.0.0.1
 
+
+# Metamask: Add Ntity Network
+```
+Network Name : Ntity
+RPC URL : https://rpc.ntity.io
+Chain ID: 197710212030 || 0x2E08726BBE
+Symbol : NTT
+Decimal : 18
+Explorer : http://blockscout.ntity.io
+```
+
+# Metamask: Add Haradev Network (testnet)
+```
+Network Name : Ntity Haradev
+RPC URL : https://blockchain.haradev.com
+Chain ID: 197710212031 || 0x2E08726BBF
+Symbol : NTTH
+Decimal : 18
+Explorer : http://blockscout.haradev.com
+```
+

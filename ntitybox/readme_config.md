@@ -19,6 +19,7 @@ passwd
 cd ~
 git clone https://github.com/ntity-core/node.git
 cp ~/node/ntitybox/readme_config.md ~/Desktop
+cp -r ~/node/ntitybox/links ~/Desktop/links
 cd ~/node/ntitybox/config
 
 # Upgrade & install
@@ -31,6 +32,9 @@ pcmanfm --set-wallpaper ntity-background.jpg
 # Ntity Dark theme
 sudo cp ~/.config/lxsession/LXDE-pi/desktop.conf ~/.config/lxsession/LXDE-pi/desktop.conf.old
 sudo cp lxde-pi/desktop.conf  ~/.config/lxsession/LXDE-pi
+
+# Shortcuts
+
 
 # Then open a terminal and type
 cd ~/node

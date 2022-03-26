@@ -19,7 +19,7 @@ passwd
 cd ~
 git clone https://github.com/ntity-core/node.git
 cp ~/node/ntitybox/readme_config.md ~/Desktop
-cp -r ~/node/ntitybox/links ~/Desktop/links
+cp -r ~/node/ntitybox/config/links ~/Desktop/links
 cd ~/node/ntitybox/config
 
 # Upgrade & install

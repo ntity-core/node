@@ -93,4 +93,4 @@ read name
 sed -i -e "s/nttMiner/$name/" ./files/app.json
 
 echo "You are ready to start the miner"
-echo "please type command : docker-compose -f ntity.yml up"
+echo "please type command : sudo docker-compose -f ntity.yml up"

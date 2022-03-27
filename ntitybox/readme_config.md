@@ -40,7 +40,8 @@ sudo cp lxde-pi/desktop.conf  ~/.config/lxsession/LXDE-pi
 
 # Then open a terminal and type
 cd ~/node
-./run.sh
+chmod 755 install.sh
+./install.sh
 
 # If you want more detail go on this page : https://github.com/ntity-core/node
 

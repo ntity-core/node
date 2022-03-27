@@ -19,17 +19,19 @@ passwd
 cd ~
 git clone https://github.com/ntity-core/node.git
 cp ~/node/ntitybox/readme_config.md ~/Desktop
-cp -r ~/node/ntitybox/config/links ~/Desktop/links
+cp ~/node/ntitybox/config/links/*.* ~/Desktop/
 cd ~/node/ntitybox/config
 
 # Upgrade & install
 sudo apt update && sudo apt upgrade
-sudo apt install retext mc
+sudo apt install retext mc docker.io docker-compose git
 
 # Copy Background image
 pcmanfm --set-wallpaper ntity-background.jpg
 
 # Ntity Dark theme
+mkdir ~/.config/lxsession/
+mkdir ~/.config/lxsession/LXDE-pi/
 sudo cp ~/.config/lxsession/LXDE-pi/desktop.conf ~/.config/lxsession/LXDE-pi/desktop.conf.old
 sudo cp lxde-pi/desktop.conf  ~/.config/lxsession/LXDE-pi
 

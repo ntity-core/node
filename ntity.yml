@@ -8,7 +8,7 @@ networks:
         - subnet: 172.168.1.0/16
 services:
   ntity-01:
-    image: ntity/node:arm64v8
+    image: ntity/node:latest
     restart: always
     container_name: ntity-01
     hostname: ntity-01

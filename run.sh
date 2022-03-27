@@ -70,7 +70,7 @@ echo  "$pass" | sudo tee /data/blockchain/password/password.txt
 echo "Please enter your wallet with the 0x"
 read wallet
 sed -i -e "s/0x57616c6c6574/$wallet/" ntity.yml
-sed -i .e "s/latest/$version/" ntity.yml
+sed -i -e "s/latest/$version/" ntity.yml
 
 
 echo "We initalize the miner"
@@ -93,3 +93,4 @@ read name
 sed -i -e "s/nttMiner/$name/" ./files/app.json
 
 echo "You are ready to start the miner"
+echo "please type command : docker-compose -f ntity.yml up"

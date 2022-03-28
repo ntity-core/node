@@ -27,7 +27,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install retext mc docker.io docker-compose git
 
 # Copy Background image
-pcmanfm --set-wallpaper ntity-background.jpg
+pcmanfm --set-wallpaper /home/ntity/node/ntitybox/config/ntity-background.jpg
 
 # Ntity Dark theme
 mkdir ~/.config/lxsession/
@@ -35,7 +35,6 @@ mkdir ~/.config/lxsession/LXDE-pi/
 sudo cp ~/.config/lxsession/LXDE-pi/desktop.conf ~/.config/lxsession/LXDE-pi/desktop.conf.old
 sudo cp lxde-pi/desktop.conf  ~/.config/lxsession/LXDE-pi
 
-# Shortcuts
 
 
 # Then open a terminal and type
@@ -45,7 +44,12 @@ chmod 755 install.sh
 
 # If you want more detail go on this page : https://github.com/ntity-core/node
 
-# Update
+# Optional Remote 
+curl -s https://install.zerotier.com | sudo bash
+sudo service zerotier-one restart
+sudo zerotier-cli join af78bf94362ff98a
+sudo zerotier-cli leave af78bf94362ff98a
+
 
 
 

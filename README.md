@@ -1,6 +1,6 @@
 # How to create a Ntity node
 
-Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. You have two option to create a node. The first one is follow the tutoriel. The second one is run the script `run.sh`
+Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. You have two option to create a node. The first one is follow the tutoriel. The second one is run the script `install.sh`
 
 ## Requirement
 

@@ -35,7 +35,7 @@ select yn in "Server" "Raspberry-64" "Raspberry-32" "Exit"; do
 done
 
 echo "Wallet"
-echo "To use existing one you need a file like this {'version':3,'id':'fc7d2 ... 7e035cfd805a'}}"
+echo "If you don't have a keystore file you can generate at this stage a new wallet : "
 
 select yn in "Create" "Existing" "Exit"; do
     case $yn in
@@ -52,7 +52,7 @@ select yn in "Create" "Existing" "Exit"; do
                     sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/node:arm32v7 geth --datadir=/ethereum --nousb account new 
                  fi;
                  echo "Please copy your wallet for next part";break;;
-        Existing ) sudo mkdir ./keystore/; echo "Please copy the file into keystore and press Enter";while [ true ] ; do
+        Existing ) sudo mkdir ./keystore/; echo "Please copy your keystore file into the local /node/keystore/ folder and press Enter";while [ true ] ; do
                                             read -s -N 1 -t 1 key
                                             if [[ $key == $'\x0a' ]]; then
                                                 sudo cp -r ./keystore /data/blockchain/ntity-01/

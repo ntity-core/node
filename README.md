@@ -1,12 +1,13 @@
 # How to create a Ntity node
 
-Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. You have two option to create a node. The first one is follow the tutoriel. The second one is run the script `install.sh`
+Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. 
 
 ## Requirement
 
 You need the following package to build and execute a Ntity node
 
-1. First you need to install docker docker-compose and git if you already have it you can go to 2. To install docker please use this :
+1. First you need to install docker docker-compose and git if you already have it you can go to 
+2. To install docker please use this :
 
 ```bash
 sudo apt-get install docker.io docker-compose git	
@@ -18,15 +19,24 @@ You need to execute this command to use docker without `sudo`
 sudo usermod -aG docker [username]
 ```
 
-## Create a node
-
 Clone the repository
 
 ```bash
 git clone https://github.com/ntity-core/node.git
 ```
 
-And create one folder for the node you want to run. 
+At this stage you can launch the install script or follow the step by step below
+
+```bash
+cd node
+chmod 700 install.sh
+./install.sh
+```
+
+
+## Create a node
+
+Create one folder for the node you want to run. 
 
 ```bash
 sudo mkdir -p /data/blockchain/ntity-01

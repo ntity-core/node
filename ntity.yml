@@ -15,7 +15,7 @@ services:
     volumes:
       - /data/blockchain/ntity-01:/blockchain
       - /data/blockchain/password:/blockchain/password
-      - /data/blockchain/static-nodes.json:/blockchain/static-nodes.json
+      - ./files/config.toml:/blockchain/config.toml
       - /data/blockchain/ntity.genesis.json:/blockchain/ntity.genesis.json
       - ./files/app.json:/root/eth-net-intelligence-api/app.json
     ports:
@@ -29,7 +29,7 @@ services:
     environment:
       - NETWORK_ID=197710212030
       - WALLET=0x57616c6c6574
-      - GETH_OPTS=--nodiscover --miner.gasprice=1 --allow-insecure-unlock --password /blockchain/password/password.txt --mine
+      - GETH_OPTS=--nodiscover --allow-insecure-unlock --password /blockchain/password/password.txt --mine --config /blockchain/config.tom
       - DATA_DIR=/blockchain
       - FREEZER_DIR=/blockchain/freezer
 volumes:

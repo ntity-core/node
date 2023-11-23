@@ -1,11 +1,11 @@
 # Image definition
-FROM golang:1.17.2-alpine as builder
+FROM golang:1.21.4-alpine as builder
 
 RUN apk add --no-cache make gcc musl-dev linux-headers git
 
 WORKDIR /
 
-RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.10.20 && make geth
+RUN git clone https://github.com/ethereum/go-ethereum.git && cd ./go-ethereum && git checkout tags/v1.13.5 && make geth
 
 FROM alpine:latest
 
@@ -25,4 +25,3 @@ RUN chmod +x /root/*.sh
 # Misc
 EXPOSE 8545 8546 30303 30303/udp
 CMD ["/root/run.sh"]
-

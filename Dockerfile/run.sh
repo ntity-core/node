@@ -40,7 +40,7 @@ GETH_OPTS="$GETH_OPTS
           --verbosity=$VERBOSITY
           --unlock=$WALLET --miner.etherbase=$WALLET"
 
-cd /root/eth-net-intelligence-api
+cd /root/ethstats-client/
 pm2 start ./app.json
 
 echo "geth $GETH_OPTS"

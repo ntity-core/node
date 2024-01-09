@@ -21,7 +21,6 @@ sudo mkdir -p /data/blockchain/ntity-01
 
 echo "Copy the configuration File"
 sudo cp ./files/ntity.genesis.json /data/blockchain/
-sudo cp ./files/static-nodes.json /data/blockchain/
 
 echo "Build docker image"
 echo "Choose platform"

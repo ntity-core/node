@@ -42,11 +42,10 @@ Create one folder for the node you want to run.
 sudo mkdir -p /data/blockchain/ntity-01
 ```
 
-And copy `ntity.genesis.json` and `static-nodes.json` into `/data/blockchain/`
+And copy `ntity.genesis.json` into `/data/blockchain/`
 
 ```bash
 sudo cp ./files/ntity.genesis.json /data/blockchain/
-sudo cp ./files/static-nodes.json /data/blockchain/
 ```
 
 ## Image
@@ -133,6 +132,17 @@ With the docker-compose down add option `-v`
 ```bash
 docker-compose -f ntity.yml down -v
 ```
+
+## Update node
+
+You need to stop the node. Pull the new image and restart the node
+
+```bash
+docker-compose -f ntity.yml down
+docker pull ntity/node
+docker-compose -f ntity.yml up
+```
+
 
 ## Get Enode
 

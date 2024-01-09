@@ -14,7 +14,7 @@
         "LISTENING_PORT": "30303",
         "INSTANCE_NAME": "nttMiner",
         "CONTACT_DETAILS": "",
-        "WS_SERVER": "ws://195.15.240.119:3000",
+        "WS_SERVER": "https://stats.ntity.io",
         "WS_SECRET": "eth-net-stats-secret",
         "VERBOSITY": 1
     }

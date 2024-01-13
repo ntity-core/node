@@ -1,15 +1,19 @@
 # Welcome to the Ntity Node Image Readme
 
-The default setting are :  
-- Image:  Raspberry PI OS 64 (1.1 GB)
-- Settings
-  - Set hostname : ntity-1**xx**.local
-  - Enable SSH : true
-  - Set username & password
-    - User : ntity
-    - Password : haradev
-  - Set wifi
-  - 
+## Create your Ntity Node on a Raspberry Pi
+- Download [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+
+## Create a new SD-Card
+- Launch Raspberry Pi Imager
+- The default setting are in Raspberry Pi Imager :  
+  - Image:  Raspberry PI OS 64 (1.1 GB)
+  - Settings
+    - Set hostname : ntity-1**xx**.local
+    - Enable SSH : true
+    - Set username & password
+      - User : ntity
+      - Password : haradev
+    - Set network information / wifi
 
 ```bash
 # First of all change the password
@@ -33,6 +37,7 @@ pcmanfm --set-wallpaper /home/ntity/node/ntitybox/config/ntity-background.jpg
 mkdir ~/.config/lxsession/
 mkdir ~/.config/lxsession/LXDE-pi/
 sudo cp ~/.config/lxsession/LXDE-pi/desktop.conf ~/.config/lxsession/LXDE-pi/desktop.conf.old
+cd ~/node/ntitybox/config
 sudo cp lxde-pi/desktop.conf  ~/.config/lxsession/LXDE-pi
 
 
@@ -49,23 +54,5 @@ curl -s https://install.zerotier.com | sudo bash
 sudo service zerotier-one restart
 sudo zerotier-cli join af78bf94362ff98a
 sudo zerotier-cli leave af78bf94362ff98a
-
-
-
-
 ```
 
-
-# Create a new SD-Card
-
-Install a Ntity node for Raspberry from scratch
-
-## for Raspberry PI 4
-- Download Raspberry Pi Imager
-- Choose Raspberry PI OS 64 (1.1 GB)
-- Settings
-  - Set hostname : ntity
-  - Enable SSH : true
-  - Set username & password
-    - User : ntity
-    - Password : haradev

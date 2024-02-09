@@ -28,7 +28,7 @@ services:
         ipv4_address: 172.168.1.2
     environment:
       - NETWORK_ID=197710212030
-      - WALLET=0x0F807C5cc74310b95D186b93975033964F65da93
+      - WALLET=0x57616c6c6574
       - GETH_OPTS= --allow-insecure-unlock --password /blockchain/password/password.txt --mine --config /blockchain/config.toml
       - DATA_DIR=/blockchain
       - FREEZER_DIR=/blockchain/freezer

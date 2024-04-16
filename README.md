@@ -60,7 +60,7 @@ For this tutorial we use latest you can change for the tag you want by replacing
 You need to pull the image you want to continue the installation node
 
 ```bash
-sudo docker pull ntity/node:latest
+sudo docker pull ethereum/client-go:v1.13.10
 ```
 
 ## Create a new wallet
@@ -68,7 +68,7 @@ sudo docker pull ntity/node:latest
 First you need to create a wallet
 
 ```bash
-sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ntity/node:latest geth --datadir=/ethereum --nousb account new
+sudo docker run -it -v "/data/blockchain/ntity-01:/ethereum" ethereum/client-go:v1.13.10 geth --datadir=/ethereum account new
 ```
 
 Copy the public key it's look like `0x24B72AeDBb3f9d97d14F59E4EF53Cf5B190De293` you will need in the next step
@@ -96,7 +96,7 @@ sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
 ```
 
 ```bash
-sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ntity/node:latest geth --datadir=/blockchain --nousb init /blockchain/ntity.genesis.json
+sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ethereum/client-go:v1.13.10 --datadir=/blockchain init /blockchain/ntity.genesis.json
 ```
 
 ## Start node

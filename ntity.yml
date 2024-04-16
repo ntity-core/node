@@ -1,36 +1,18 @@
-version: "3"
+version: '3'
 
-networks:
-  internalnet:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.168.1.0/16
 services:
-  ntity-01:
-    image: ntity/node:latest
-    restart: always
-    container_name: ntity-01
-    hostname: ntity-01
-    volumes:
-      - /data/blockchain/ntity-01:/blockchain
-      - /data/blockchain/password:/blockchain/password
-      - ./files/config.toml:/blockchain/config.toml
-      - /data/blockchain/ntity.genesis.json:/blockchain/ntity.genesis.json
-      - ./files/app.json:/root/ethstats-client/app.json
+  ethereum:
+    image: ethereum/client-go:v1.13.14-arm64
+    container_name: ethereum_node
+    command: --datadir=/ethereum --config /ethereum/config.toml --ethstats="֍ NAME:eth-net-stats-secret@stats.ntity.io" --networkid=197710212030 --bootnodes="enode://0b607f1dd33b15cf99ab30a4f75b7e62ba9ec6a9af26cbc7a809e8f6e9bf14d8e2c3b2e8dce4e6017e6dabef4822b6416ee5a532f037e83dbd6e180903292db1@rpc.ntity.io:30301" --allow-insecure-unlock --unlock="WALLET" --miner.etherbase="WALLET" --password="/ethereum/password.txt" --syncmode="snap" --mine
     ports:
-      - "8545:8545"
-      - "8546:8546"
-      - "30303:30303"
-      - "30303:30303/udp"
+      - "8545:8545"  # Port RPC
+      - "30303:30303"  # Port P2P
+    volumes:
+      - /data/blockchain/ntity-01:/ethereum
+      - ./files/config.toml:/ethereum/config.toml
     networks:
-      internalnet:
-        ipv4_address: 172.168.1.2
-    environment:
-      - NETWORK_ID=197710212030
-      - WALLET=0x57616c6c6574
-      - GETH_OPTS= --allow-insecure-unlock --password /blockchain/password/password.txt --mine --config /blockchain/config.toml
-      - DATA_DIR=/blockchain
-      - FREEZER_DIR=/blockchain/freezer
-volumes:
-  blockchain:
+      - ethereum_network
+networks:
+  ethereum_network:
+    driver: bridge

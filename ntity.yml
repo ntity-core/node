@@ -2,7 +2,7 @@ version: '3'
 
 services:
   ethereum:
-    image: ethereum/client-go:v1.13.14-arm64
+    image: ethereum/client-go:v1.13.14
     container_name: ethereum_node
     command: --datadir=/ethereum --config /ethereum/config.toml --ethstats="֍ NAME:eth-net-stats-secret@stats.ntity.io" --networkid=197710212030 --bootnodes="enode://0b607f1dd33b15cf99ab30a4f75b7e62ba9ec6a9af26cbc7a809e8f6e9bf14d8e2c3b2e8dce4e6017e6dabef4822b6416ee5a532f037e83dbd6e180903292db1@rpc.ntity.io:30301" --allow-insecure-unlock --unlock="WALLET" --miner.etherbase="WALLET" --password="/ethereum/password.txt" --syncmode="snap" --mine
     ports:

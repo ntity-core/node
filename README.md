@@ -2,6 +2,8 @@
 
 Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. 
 
+
+
 ## Requirement
 
 You need the following package to build and execute a Ntity node
@@ -25,16 +27,56 @@ Clone the repository
 git clone https://github.com/ntity-core/node.git
 ```
 
-At this stage you can launch the install script or follow the step by step below
+
+## Nethermind
+- Change password -> Nethermind\password.txt
+- Change name node -> config.cfg -> EthStats -> Name
+
+### Start node
+
+On the first start
 
 ```bash
-cd node
-chmod 700 install.sh
-./install.sh
+docker-compose -f nethermind.yml up
 ```
 
+And for other start 
 
-## Create a node
+```bash
+docker-compose -f nethermind.yml start
+```
+
+### Stop node
+
+If you have the output you need to use `crtl + c` to close and have access to the console
+
+For the both usage you need to down the docker-compose 
+
+```bash
+docker-compose -f nethermind.yml stop
+```
+
+### Reset all node
+
+With the docker-compose down add option `-v`
+
+```bash
+docker-compose -f nethermind.yml down -v
+```
+
+### Update node
+
+You need to stop the node. Pull the new image and restart the node
+
+```bash
+docker-compose -f nethermind.yml down
+docker pull nethermind/nethermind:latest
+docker-compose -f nethermind.yml up
+```
+
+## Geth
+
+### Create a node
 
 Create one folder for the node you want to run. 
 
@@ -48,7 +90,7 @@ And copy `ntity.genesis.json` into `/data/blockchain/`
 sudo cp ./files/ntity.genesis.json /data/blockchain/
 ```
 
-## Image
+### Image
 All the image is on docker hub. 
 
 - latest is for amd64
@@ -63,7 +105,7 @@ You need to pull the image you want to continue the installation node
 sudo docker pull ethereum/client-go:v1.13.10
 ```
 
-## Create a new wallet
+### Create a new wallet
 
 First you need to create a wallet
 
@@ -85,7 +127,7 @@ sed -i 's/0x57616c6c6574/0x24B72AeDBb3f9d97d14F59E4EF53Cf5B190De293/' ntity.yml
 ```
 
 
-## Init genesis (only for new node)
+### Init genesis (only for new node)
 
 You need to init for each node the genesis block
 
@@ -99,7 +141,7 @@ sudo cp /data/blockchain/ntity.genesis.json /data/blockchain/ntity-01
 sudo docker run -it -v "/data/blockchain/ntity-01:/blockchain" ethereum/client-go:v1.13.10 --datadir=/blockchain init /blockchain/ntity.genesis.json
 ```
 
-## Start node
+### Start node
 
 before starting your new node you need to change the name in `files/app.json`. The default value is `nttMiner` replace it with a new name.
 
@@ -115,7 +157,7 @@ And for other start
 docker-compose -f ntity.yml start
 ```
 
-## Stop node
+### Stop node
 
 If you have the output you need to use `crtl + c` to close and have access to the console
 
@@ -125,7 +167,7 @@ For the both usage you need to down the docker-compose
 docker-compose -f ntity.yml stop
 ```
 
-## Reset all node
+### Reset all node
 
 With the docker-compose down add option `-v`
 
@@ -133,7 +175,7 @@ With the docker-compose down add option `-v`
 docker-compose -f ntity.yml down -v
 ```
 
-## Update node
+### Update node
 
 You need to stop the node. Pull the new image and restart the node
 
@@ -142,22 +184,6 @@ docker-compose -f ntity.yml down
 docker pull ntity/node
 docker-compose -f ntity.yml up
 ```
-
-
-## Get Enode
-
-To get the enode once you start the container you need to execute the following commands
-
-```bash 
-docker exec -it ntity-01 /bin/bash
-cd /blockchain/ && geth attach geth.ipc
-admin.nodeInfo.enode
-```
-
-it's look like that
-`enode://dd7dbcee4e739cfff236b2cae51559d44b4c18524c8aa78ffca3ea49f3b36184eafb08597c4414c20fdcf1548de924585b15a6247a9a719c85431b10168feff4@127.0.0.1:30303`
-
-Add your ipv4 public to replace 127.0.0.1
 
 
 # Metamask: Add Ntity Network
@@ -179,4 +205,5 @@ Symbol : NTTH
 Decimal : 18
 Explorer : http://blockscout.haradev.com
 ```
+
 

@@ -2,6 +2,7 @@ version: '3'
 
 services:
   ethereum:
+    restart: always
     command: --config /nethermind/configs/ntity.cfg --Merge.Enabled false
     image : nethermind/nethermind:latest
     container_name: ethereum_node

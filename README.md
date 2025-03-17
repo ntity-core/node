@@ -32,6 +32,16 @@ git clone https://github.com/ntity-core/node.git
 - Change password -> Nethermind\password.txt
 - Change name node -> config.cfg -> EthStats -> Name
 
+
+### Use an other wallet
+
+if xxd software doesn't exist, install it.
+
+```bash
+sudo mv node.key.plain node.key.plain.bckp
+echo -n "4cccc private key without 0x ...." | xxd -r -p | sudo tee node.key.plain > /dev/null
+```
+
 ### Start node
 
 On the first start

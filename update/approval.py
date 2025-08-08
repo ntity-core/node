@@ -9,7 +9,7 @@ import logging
 # Configuration
 LOG_FILE = "./nethermind_proposals.log"
 PROCESSED_FILE = "./processed_proposals.json"
-APPROUVAL_API_URL = "https://api.ntity.io/v3/misc/approuval"
+APPROUVAL_API_URL = "https://api.ntity.io/v3/misc/approval"
 DOCKER_URL = "http://localhost:8545"
 
 # Configuration du logging

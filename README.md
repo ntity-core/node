@@ -30,7 +30,7 @@ git clone https://github.com/ntity-core/node.git
 ## updater
 in the node folder
 ```bash
-(crontab -l ; echo "0 0 * * * $(which python3) $(pwd)/update/approuval.py") | crontab -
+(crontab -l ; echo "0 0 * * * $(which python3) $(pwd)/update/approval.py") | crontab -
 ```
 
 

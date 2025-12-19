@@ -48,6 +48,16 @@ sudo mv node.key.plain node.key.plain.bckp
 echo -n "4cccc private key without 0x ...." | xxd -r -p | sudo tee node.key.plain > /dev/null
 ```
 
+### Use an full node 
+
+edit Nethermind/config.cfg and add
+
+```bash
+  "Pruning": {
+    "Mode": "None"
+  },v
+```
+
 ### Start node
 
 On the first start

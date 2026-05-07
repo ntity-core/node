@@ -1,6 +1,6 @@
 [Eth]
 NetworkId = 197710212030
-SyncMode = "snap"
+SyncMode = "full"
 EthDiscoveryURLs = []
 SnapDiscoveryURLs = []
 NoPruning = false
@@ -12,7 +12,7 @@ DatabaseFreezer = ""
 TrieCleanCache = 154
 TrieDirtyCache = 256
 TrieTimeout = 3600000000000
-SnapshotCache = 102
+SnapshotCache = 256
 Preimages = false
 EnablePreimageRecording = false
 RPCGasCap = 50000000

@@ -2,7 +2,17 @@
 
 Ntity is a blockchain. We use docker to deploy node to interact with the Ntity blockchain. To create a node you need to execute the following rules. 
 
+We offer two types of validators, but there are others available
+- Nethermind
+- Geth (supported up to version 1.13.14)
 
+It is also important to choose how to store the blockchain based on the size of your memory (or hard drive) 
+
+| Synchronization Mode      | Description                                                            | Recommended Storage | Example Machine                            | Nethermind Sync                                        | Nethermind Pruning                                           | Geth                                    |
+| ------------------------- | ---------------------------------------------------------------------- | ------------------- | ------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+| Snap Sync <br>*(recommended)* | Downloads a recent snapshot<br>and then catches up with<br>the latest blocks | 128 GB              | Raspberry Pi (3-4-5)                       | `--Sync.SnapSync=true` <br> or <br> `--Sync.Mode=Snap` | `--Pruning.Mode=Hybrid`                                      | `geth --syncmode snap`                  |
+| Full Sync                 | Downloads and validates all<br>blocks and transactions                    | Minimum 1 TB        | Desktop computer or<br>laptop newer than 2018 | `--Sync.Mode=Full`                                     | `--Pruning.Mode=Memory` <br> or <br> `--Pruning.Mode=Hybrid` | `geth --syncmode full`                  |
+| Archive Node              | Stores all historical<br>blockchain states                                | Minimum 1 TB        | Desktop computer or<br>laptop newer than 2018 | `--Sync.Mode=Full`                                     | `--Pruning.Mode=None`                                        | `geth --syncmode full --gcmode archive` |
 
 ## Requirement
 

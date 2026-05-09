@@ -8,13 +8,13 @@ services:
     container_name: ethereum_node
     ports:
       - "8545:8545"  # Port RPC
-      - "30305:30303"  # Port P2P
+      - "30303:30303"  # Port P2P
     volumes:
       - ./nethermind_data:/nethermind/db
       - ./keystore:/nethermind/keystore
       - ./logs:/nethermind/logs
       - ./Nethermind/config.cfg:/nethermind/configs/ntity.cfg
-      - ./Nethermind/static-node.json:/nethermind/Data/static-nodes.json
+      - ./Nethermind/static-node.json:/nethermind/static-nodes.json
       - ./Nethermind/ntity.genesis.json:/nethermind/chainspec/ntity.json
       - ./Nethermind/password.txt:/nethermind/password.txt
     networks:
